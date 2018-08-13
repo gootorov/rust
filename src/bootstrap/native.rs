@@ -174,8 +174,7 @@ impl Step for Llvm {
         // just a local concern.  However, it doesn't work well everywhere.
         //
         // If we are shipping llvm tools then we statically link them LLVM
-        if (target.contains("linux-gnu") || target.contains("apple-darwin")) &&
-            !builder.config.llvm_tools_enabled {
+        if target.contains("linux-gnu") || target.contains("apple-darwin") {
                 cfg.define("LLVM_LINK_LLVM_DYLIB", "ON");
         }
 
